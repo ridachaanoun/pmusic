@@ -1,0 +1,20 @@
+{
+    "name": "youco/pmusic",
+    "version": "1.0.0",
+    "autoload": {
+        "classmap": [
+        "src/",
+        "routes/",
+        "config/",
+        "app/"
+    ]
+    },
+
+    "authors": [
+        {
+            "name": "ridachaanoun",
+            "email": "ridachaanoun.ff.2@gmail.com"
+        }
+    ],
+    "require": {}
+}
