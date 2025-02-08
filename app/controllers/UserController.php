@@ -28,12 +28,10 @@ class UserController {
             );
 
             if ($user->register()) {
-                include "app/views/register.php";
-                echo "noooooooooooooo";
+                header("location: login.php");
                 exit();
             } else {
                 include "app/views/register.php";
-                echo "noooooooooooooo";
                 exit();
             }
         } else {
@@ -49,15 +47,19 @@ class UserController {
             $user = User::login($email, $password, $this->db);
             if ($user) {
                 $_SESSION['user'] = [
-                    'idUser' => $user->getId(),
                     'username' => $user->getUsername(),
                     'email' => $user->getEmail(),
                     'role' => $user->getRole(),
+                    'status' => $user->getStatus(),
+                    'image' => $user->getImage(),
+                    'phone' => $user->getPhone(),
                 ];
-                header("Location: profile");
+                
+                header("Location: home");
                 exit();
             } else {
-                header("Location: login?error=invalid");
+                $error= "invalid";
+                include "app/views/login.php";
                 exit();
             }
         } else {

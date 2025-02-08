@@ -11,11 +11,13 @@ class Router {
         $requestUri = parse_url($_GET['route'], PHP_URL_PATH);
         $requestUri = trim($requestUri, '/');
 
+        // echo $requestUri;
         // Define routes
         $routes = [
             // user routes
             'home' => ['homeController', 'show'],
-            'register' => ['UserController', 'register']
+            'register' => ['UserController', 'register'],
+            'login' => ['UserController', 'login']
 
         ];
 

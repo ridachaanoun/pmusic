@@ -8,7 +8,7 @@ class homeController {
     }
 
     public function show() {
-        echo "reda";
+        include "app/views/home.php";
     }
 }
 ?>

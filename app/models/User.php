@@ -64,13 +64,22 @@ class User {
     }
 
     public static function login(string $email, string $password, $db): ?User {
-        $query = "SELECT * FROM User WHERE email = :email";
+        $query = "SELECT * FROM Users WHERE email = :email";
         $stmt = $db->prepare($query);
         $stmt->execute(['email' => $email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
+    
         if ($user && password_verify($password, $user['password'])) {
-            return new User($db, $user['username'], $user['email'], $user['password'], $user['role'], $user['image'], $user['phone'], $user['status']);
+            return new User(
+                $db,
+                $user['username'],
+                $user['email'],
+                $user['password'], // Already hashed
+                $user['role'],
+                $user['image'],
+                $user['phone'],
+                $user['status']
+            );
         }
         return null;
     }
